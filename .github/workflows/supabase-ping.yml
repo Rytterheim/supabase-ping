@@ -1,5 +1,3 @@
-yamlname: Supabase Keep-Alive Ping
-
 on:
   schedule:
     - cron: '0 8 * * *'
