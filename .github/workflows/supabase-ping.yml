@@ -1,7 +1,9 @@
+yamlname: Supabase Keep-Alive Ping
+
 on:
   schedule:
-    - cron: '0 8 * * *'  # Körs varje dag kl 08:00 UTC
-  workflow_dispatch:      # Kan även köras manuellt
+    - cron: '0 8 * * *'
+  workflow_dispatch:
 
 jobs:
   ping:
@@ -10,9 +12,8 @@ jobs:
       - name: Pinga Supabase
         run: |
           response=$(curl -s -o /dev/null -w "%{http_code}" \
-            "${{ secrets.SUPABASE_URL }}/rest/v1/" \
-            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
-            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}")
+            "https://mmgdsnuhravklunmcidw.supabase.co/auth/v1/health" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}")
           
           echo "HTTP-svar: $response"
           
