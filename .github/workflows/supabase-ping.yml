@@ -1,3 +1,5 @@
+name: Supabase Keep-Alive Ping
+
 on:
   schedule:
     - cron: '0 8 * * *'
@@ -10,8 +12,9 @@ jobs:
       - name: Pinga Supabase
         run: |
           response=$(curl -s -o /dev/null -w "%{http_code}" \
-            "https://mmgdsnuhravklunmcidw.supabase.co/auth/v1/health" \
-            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}")
+            "https://mmgdsnuhravklunmcidw.supabase.co/rest/v1/lockelsbo_store?select=key&limit=1" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}")
           
           echo "HTTP-svar: $response"
           
