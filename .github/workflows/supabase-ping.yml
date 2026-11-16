@@ -1,3 +1,4 @@
+# re-enable workflow
 name: Supabase Keep-Alive Ping
 
 on:
@@ -24,3 +25,4 @@ jobs:
             echo "⚠️ Oväntat svar: $response"
             exit 1
           fi
+Re-enable workflow
